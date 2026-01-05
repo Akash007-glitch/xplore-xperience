@@ -9,6 +9,7 @@ import Contact from "./Pages/Contact";
 
 import DestinationCard from "./component/DestinationCard ";
 import Footer from "./component/Footer";
+import WhyUs from "./component/WhyUs";
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/" element={<><Hero /><DestinationCard /><Packages /></>} />
+          <Route path="/" element={<><Hero /><WhyUs/><DestinationCard /><Packages /></>} />
           <Route path="/packages" element={<Packages />} />
           <Route path="/About" element={<About />} />
           <Route path="/contact" element={<Contact />} />
