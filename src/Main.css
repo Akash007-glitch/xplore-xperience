@@ -75,6 +75,49 @@ body {
   color: #eaeaea;
 }
 
+/*WhyUs_section*/
+.why-us-section {
+  max-width: 400px;
+  padding-left: 20px;
+  text-align: left;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  margin-left: 80px;
+  margin-right: auto;
+}
+
+  .why-us-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 60px;
+}
+
+.why-card {
+  background: white;
+
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+}
+.why-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.why-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+
 
 
 /* DestinationCard_section */
@@ -171,6 +214,16 @@ body {
         font-size: 18px;
     }
 }
+@media (max-width: 768px) {
+  .why-us-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .why-us-section {
+    padding: 70px 6%;
+  }
+}
+
 
 
 
@@ -312,6 +365,7 @@ body {
 
 
 /* Footer_section */
+<<<<<<< HEAD
 /* ===== FOOTER ===== */
 .footer {
   background: #000;
@@ -429,6 +483,40 @@ body {
     gap: 40px;
   }
 }
+=======
+.footer {
+    background: #0b0b0b;
+    color: white;
+    padding: 40px 8%;
+    margin-top: 80px;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-links {
+    margin: 16px 0;
+}
+
+.footer-links a {
+    color: #e63946;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer-copy {
+    font-size: 14px;
+    color: #aaa;
+}
+/* About Page Styles */
+.about-page {
+  padding: 120px 8%;
+  background: #f9faf8;
+  color: #1e1e1e;
+}
+
+>>>>>>> 71c76fd965c05bdfa2318b6a1dba4fc03521c766
 /* Intro */
 .about-hero {
   max-width: 700px;
