@@ -11,7 +11,7 @@
 
 * {
   font-family: 'Poppins', sans-serif;
-  margin: ;
+
   
 }
 body {
@@ -364,8 +364,6 @@ body {
 }
 
 
-/* Footer_section */
-<<<<<<< HEAD
 /* ===== FOOTER ===== */
 .footer {
   background: #000;
@@ -483,7 +481,6 @@ body {
     gap: 40px;
   }
 }
-=======
 .footer {
     background: #0b0b0b;
     color: white;
@@ -516,7 +513,6 @@ body {
   color: #1e1e1e;
 }
 
->>>>>>> 71c76fd965c05bdfa2318b6a1dba4fc03521c766
 /* Intro */
 .about-hero {
   max-width: 700px;
