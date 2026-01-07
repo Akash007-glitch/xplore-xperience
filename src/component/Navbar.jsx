@@ -18,8 +18,8 @@ export default function Navbar() {
                     About us
                 </NavLink>
 
-                <NavLink to="/contact">
-                    Contact
+                <NavLink to="/bike-rentals">
+                    Bike Rentals
                 </NavLink>
                 
             </div>

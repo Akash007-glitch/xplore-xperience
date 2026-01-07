@@ -1,5 +1,6 @@
 import { whyUsData } from "../data/whyUsData";
 import { motion } from "framer-motion";
+import { FaMapMarkedAlt, FaClipboardList, FaHeadset } from "react-icons/fa";
 
 export default function WhyUs() {
     return (

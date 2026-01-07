@@ -4,7 +4,7 @@ import Hero from "./component/Hero";
 import Navbar from "./component/Navbar";
 import Packages from "./Pages/Package";
 import About from "./Pages/About";
-import Contact from "./Pages/Contact";
+import BikeRentals from "./Pages/BikeRentals";
 
 
 import DestinationCard from "./component/DestinationCard ";
@@ -22,7 +22,7 @@ function App() {
           <Route path="/" element={<><Hero /><WhyUs/><DestinationCard /><Packages /></>} />
           <Route path="/packages" element={<Packages />} />
           <Route path="/About" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/bike-rentals" element={<BikeRentals />} />
         </Routes>
         <Footer/>
       </BrowserRouter>
