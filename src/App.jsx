@@ -7,9 +7,10 @@ import About from "./Pages/About";
 import BikeRentals from "./Pages/BikeRentals";
 
 
-import DestinationCard from "./component/DestinationCard ";
+
 import Footer from "./component/Footer";
 import WhyUs from "./component/WhyUs";
+import Destinations from "./component/Destination";
 
 
 function App() {
@@ -19,12 +20,12 @@ function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/" element={<><Hero /><WhyUs/><DestinationCard /><Packages /></>} />
+          <Route path="/" element={<><Hero /><WhyUs /><Destinations /></>} />
           <Route path="/packages" element={<Packages />} />
           <Route path="/About" element={<About />} />
           <Route path="/bike-rentals" element={<BikeRentals />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </div>
   );
