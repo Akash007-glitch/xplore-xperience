@@ -36,20 +36,38 @@ export default function DestinationCard() {
     <section className="section">
       <h2 className="section-title">Popular Destinations</h2>
 
+
       {loading ? (
         <div className="loader-wrapper">
           <span className="loader"></span>
         </div>
       ) : (
-        <div className="dest-grid fade-in">
-          {destinations.map((place) => (
-            <div className="dest-card" key={place.id}>
-              <img src={place.image} alt={place.name} />
-              <h3>{place.name}</h3>
+        <div className="destination-card">
+          <img
+            src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34"
+            alt="El Nido"
+            className="card-image"
+          />
+
+          <div className="price-badge">
+            starts at ₹4,999
+          </div>
+
+          <div className="card-overlay">
+            <h3>El Nido</h3>
+            <p className="tagline">Beach paradise</p>
+
+            <div className="card-meta">
+              <span className="rating">⭐ 4.8 (1.2k)</span>
+              <span className="location">📍 Palawan, Region</span>
             </div>
-          ))}
+          </div>
         </div>
+        
+
+
       )}
+      <button className="view-more-btn">View More</button>
     </section>
   );
 }
