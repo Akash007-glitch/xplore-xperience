@@ -767,6 +767,11 @@ body {
   color: #888;
   text-align: center;
 }
+.footer-link {
+  color: #ffffff;
+  margin: 0 8px;
+  text-decoration: none;
+}
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
