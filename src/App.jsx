@@ -12,6 +12,7 @@ import Footer from "./component/Footer";
 import WhyUs from "./component/WhyUs";
 
 import DestinationCard from "./component/DestinationCard ";
+import Destinations from "./component/Destinations";
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
         <Navbar />
 
         <Routes>
-          <Route path="/" element={<><Hero /><WhyUs /><DestinationCard /></>} />
+          <Route path="/" element={<><Hero /><WhyUs /><Destinations /></>} />
           <Route path="/packages" element={<Packages />} />
           <Route path="/About" element={<About />} />
           <Route path="/bike-rentals" element={<BikeRentals />} />

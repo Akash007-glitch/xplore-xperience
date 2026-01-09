@@ -61,8 +61,8 @@
   padding: 14px 36px;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--dark);
-  background-color: white;
+  color: #ffffff;
+  background: linear-gradient(135deg, #7ed957, #5bbf3a);
   border: none;
   border-radius: 999px;
   cursor: pointer;
@@ -84,10 +84,16 @@
   box-shadow: 0 6px 16px rgba(0, 255, 156, 0.3);
 }
 
+.hero p {
+  margin-top: 18px;
+  padding-bottom: 2%;
+  font-size: 18px;
+  text-align: left;
+  padding-left: 2%;
+  color: #eaeaea;
+}
 
-/* =========================
-   WHY US SECTION
-========================= */
+/*WhyUs_section*/
 .why-us {
   display: flex;
   gap: 80px;
@@ -338,6 +344,7 @@
 /* View more button */
 .view-more-btn {
   display: block;
+  /* margin: 20px auto 0; */
   padding: 12px 28px;
   font-size: 13px;
   font-weight: 600;
@@ -357,6 +364,112 @@
     box-shadow 0.25s ease,
     background 0.25s ease;
 }
+
+/* SECTION */
+.destination-section {
+  background: #f4f6f8;
+  padding: 80px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* RIGHT PANEL */
+.destination-panel {
+  width: 360px;
+  background: #e9edf1;
+  padding: 20px;
+  border-radius: 26px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CARD */
+.destination-card {
+  position: relative;
+  height: 240px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.destination-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+}
+
+/* IMAGE */
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* PRICE BADGE */
+.price-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.9);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 2;
+}
+
+/* OVERLAY */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.3),
+    transparent
+  );
+}
+
+/* TEXT */
+.card-overlay h3 {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.tagline {
+  color: #e6e6e6;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.card-meta {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: #f1f1f1;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .destination-section {
+    justify-content: center;
+    padding: 60px 0;
+  }
+
+  .destination-panel {
+    width: 90%;
+  }
+}
+
 
 .view-more-btn:hover {
   transform: translateY(-2px);
