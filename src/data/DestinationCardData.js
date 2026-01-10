@@ -3,13 +3,13 @@ import { image } from "framer-motion/m";
 export const destinations = [
   {
     id: 1,
-    title: "El Nido",
-    tagline: "Beach paradise",
-    location: "Palawan, Region",
-    rating: "4.8",
-    reviews: "1.2k",
-    price: "₹4,999",
-    image: "public\image\meghalaya.jpg",
+    title: "Meghalaya",
+    tagline: "3days 2nights",
+    location: "Shillong, Region",
+    rating: "",
+    reviews: "",
+    price: "₹8,999",
+    image: "public/image/meghalaya.jpg",
   },
   {
     id: 2,

@@ -47,27 +47,19 @@
   color: var(--white);
 }
 
-.hero p {
-  margin-top: 18px;
-  padding-bottom: 2%;
-  font-size: 18px;
-  text-align: left;
-  padding-left: 2%;
-  color: var(--light);
-}
 
 /* CTA Button */
 .hero-btn {
   padding: 14px 36px;
   font-size: 1rem;
   font-weight: 600;
-  color: #ffffff;
-  background: linear-gradient(135deg, #7ed957, #5bbf3a);
+  color: #050505;
+  background: white;
   border: none;
   border-radius: 999px;
   cursor: pointer;
 
-  box-shadow: 0 8px 24px rgba(0, 255, 156, 0.35);
+  /* box-shadow: 0 8px 24px rgba(0, 255, 156, 0.35); */
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
@@ -76,6 +68,7 @@
 
 .hero-btn:hover {
   transform: translateY(-3px);
+  background: var(--primary);
   box-shadow: 0 14px 36px rgba(0, 255, 156, 0.55);
 }
 
@@ -85,8 +78,9 @@
 }
 
 .hero p {
-  margin-top: 18px;
+  margin-top: 40%;
   padding-bottom: 2%;
+  font-weight: 300;
   font-size: 18px;
   text-align: left;
   padding-left: 2%;
@@ -311,7 +305,7 @@
 
 .card-meta {
   display: flex;
-  gap: 14px;
+  gap: 10px;
   margin-top: 8px;
   font-size: 13px;
   color: var(--light);
@@ -368,27 +362,83 @@
 /* SECTION */
 .destination-section {
   background: #f4f6f8;
-  padding: 80px 0;
+  padding: 80px 10%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+}
+
+.destination-wrapper {
+  width: 100%;
+}
+
+.destination-wrapper .section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* SLIDER CONTAINER */
+.slider-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  justify-content: center;
+  position: relative;
 }
 
 /* RIGHT PANEL */
 .destination-panel {
-  width: 360px;
-  background: #e9edf1;
-  padding: 20px;
-  border-radius: 26px;
-
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
+  min-width: fit-content;
+}
+
+/* SLIDER ARROWS */
+.slider-arrow {
+  background: var(--primary);
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  color: var(--dark);
+  font-weight: bold;
+}
+
+.slider-arrow:hover:not(:disabled) {
+  background: var(--secondary);
+  transform: scale(1.1);
+}
+
+.slider-arrow:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.slider-arrow-left {
+  order: -1;
+  margin-bottom: 0;
+}
+
+.slider-arrow-right {
+  order: 1;
+  margin-bottom: 0;
 }
 
 /* CARD */
 .destination-card {
   position: relative;
-  height: 240px;
+  height: 400px;
+  width: 280px;
+  flex-shrink: 0;
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;

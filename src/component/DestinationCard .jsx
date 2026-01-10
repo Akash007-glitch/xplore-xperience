@@ -18,7 +18,7 @@ export default function DestinationCard({ item }) {
         <p className="tagline">{item.tagline}</p>
 
         <div className="card-meta">
-          <span>⭐ {item.rating} ({item.reviews})</span>
+          {/* <span>⭐ {item.rating} ({item.reviews})</span> */}
           <span>📍 {item.location}</span>
         </div>
       </div>
