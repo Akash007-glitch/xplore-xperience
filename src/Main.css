@@ -95,6 +95,7 @@
   background: var(--white);
 }
 
+
 .why-left {
   flex: 1;
 }
@@ -114,7 +115,7 @@
 }
 
 .why-left h2 span {
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 .why-left p {
