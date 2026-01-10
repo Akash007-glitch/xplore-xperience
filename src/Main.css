@@ -764,7 +764,7 @@
 .nav-links {
   display: flex;
   margin-left: 38%;
-  gap: 24px;
+  gap: 30px;
 }
 
 .nav-links a {
@@ -1097,9 +1097,8 @@
         }
 
         .package-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.2);
-            border-color: #667eea;
+            transform: none; /* Remove the translateY effect */
+            box-shadow: none; /* Remove the shadow effect */
         }
 
         .package-image {
@@ -1189,4 +1188,213 @@
         }
 .coming-soon-container {
     margin: 10px;
+}
+
+/* Tour Packages Section */
+.tour-packages {
+  padding: 60px 20px;
+  background-color: #f5f5f5;
+}
+
+.packages-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.packages-content {
+  flex: 1;
+  background: linear-gradient(135deg, #7a8fa3 0%, #5b6b7d 100%);
+  flex: 1;
+  background: #abbdcd;
+  border-radius: 20px;
+  padding: 40px;
+  color: white;
+  min-height: 280px;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.packages-content h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.packages-content p {
+  font-size: 16px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.browse-btn {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--dark);
+  border: none;
+  margin-top: 40px;
+  padding: 10px 18px;      /* ↓ smaller padding */
+  font-size: 14px;         /* ↓ smaller text */
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  width: fit-content;   /* prevents stretching */
+  cursor: pointer;
+  cursor: pointer;
+  z-index: 1;
+
+  box-shadow: 0 8px 24px rgba(0, 255, 156, 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  transition: background-color 0.3s ease;
+}
+
+.browse-btn:hover {
+  background: linear-gradient(135deg, var(--secondary), var(--primary)); /* Reverse gradient */
+  color: var(--white); /* Change text color */
+  transform: scale(1.05); /* Slightly enlarge the button */
+  box-shadow: 0 12px 30px rgba(0, 194, 255, 0.5); /* Add a stronger shadow */
+}
+
+.packages-cards {
+  flex: 1.5;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.package-card {
+  flex: 1;
+  min-width: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.package-card:hover {
+  transform: translateY(1px);
+  transform: none; /* Remove the translateY effect */
+  box-shadow: none; /* Remove the shadow effect */
+}
+
+.package-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.package-info {
+  background-color: white;
+  padding: 20px;
+}
+
+.package-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.package-info p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .packages-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .packages-cards {
+    justify-content: center;
+  }
+
+  .package-card {
+    min-width: 250px;
+  }
+  /* How It Works Section */
+}
+.how-it-works {
+  padding: 100px 10%;
+  background: #ffffff;
+}
+
+.how-title {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 50px;
+  color: #1f2937;
+}
+
+/* STEPS */
+.steps-container {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.step {
+  flex: 1;
+}
+
+.step-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 2px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 14px;
+}
+
+.step h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.step p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* DESCRIPTION */
+.how-description h4 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.how-description p {
+  max-width: 700px;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .steps-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .how-it-works {
+    padding: 70px 6%;
+  }
 }
