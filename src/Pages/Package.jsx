@@ -1,6 +1,6 @@
 import { useState } from "react";
 import fuzzyMatch from "../utils/fuzzyMatch";
-const  WHATSSAPP_NUMBER = "918134904755"; // Replace with actual number
+const  WHATSAPP_NUMBER = "918134904755"; // Replace with actual number
 
 const DATA = [
   {
@@ -116,13 +116,13 @@ export default function Packages() {
   function openWhatsApp(pkg, state) {
     console.log("clicked:", pkg.title);
   const message = `
-Hi 👋
+Hi 
 
 I’m interested in the *${pkg.title}* package.
 
-📍 State: ${state}
-🧭 Package: ${pkg.title}
-⏱️ Duration: ${pkg.badges?.join(", ") || "Please share details"}
+ State: ${state}
+ Package: ${pkg.title}
+ Duration: ${pkg.badges?.join(", ") || "Please share details"}
 
 Please share itinerary, pricing and available dates.
 `;
@@ -130,7 +130,7 @@ Please share itinerary, pricing and available dates.
   const encodedMessage = encodeURIComponent(message);
   const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-  window.location.href = url;
+  window.open(whatsappURL, "_blank");
 }
 
 

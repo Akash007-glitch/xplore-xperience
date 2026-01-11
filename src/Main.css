@@ -1309,7 +1309,6 @@
   transform: translateY(-10px);
   box-shadow: 0 34px 70px rgba(0,0,0,0.22);
 }
-
 /* ===============================
    IMAGE
 ================================ */
@@ -1393,6 +1392,8 @@
   background: linear-gradient(135deg, #00ff9c, #00c2ff);
   color: #0b0b0b;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .package-btn:hover {
