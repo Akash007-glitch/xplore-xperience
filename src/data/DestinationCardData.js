@@ -1,6 +1,7 @@
 import { image } from "framer-motion/m";
 
 export const destinations = [
+  
   {
     id: 1,
     title: "Meghalaya",
