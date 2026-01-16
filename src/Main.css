@@ -12,12 +12,26 @@
   /* SURFACES */
   --light: #ede7dc;       /* warm sand / travel background */
   --white: #ffffff;      /* cards ONLY, not background */
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 
 * {
   font-family: 'Poppins', sans-serif;
   margin: 0%;
+  
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+.app,
+.main,
+.layout {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 
 }/* =========================
@@ -517,6 +531,9 @@
   }
 
   .destination-panel {
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
     width: 90%;
   }
 }
@@ -536,6 +553,7 @@
   justify-content: center;
   align-items: center;
 }
+
 
 .loader {
   width: 48px;
@@ -814,6 +832,48 @@
   font-size: 24px;
   cursor: pointer;
   color: var(--text);
+}
+
+/* Ensure close button visibility */
+.nav-links {
+  position: relative;
+}
+
+.nav-links .close-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--text);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.nav-links .close-menu i {
+  font-size: 24px;
+}
+
+.nav-links .close-menu:hover {
+  color: var(--primary);
+}
+
+/* Close Button Styles */
+.nav-links .close-menu {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--dark);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.nav-links .close-menu:hover {
+  color: var(--primary);
 }
 
 /* =========================

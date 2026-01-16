@@ -24,6 +24,11 @@ export default function Navbar() {
         <NavLink to="/About" onClick={() => setMenuOpen(false)}>
           About us
         </NavLink>
+
+        {/* Close Button */}
+        <button className="close-menu" onClick={() => setMenuOpen(false)}>
+          <i className="ri-close-line"></i>
+        </button>
       </div>
 
       {/* BOOK NOW (DESKTOP ONLY) */}
