@@ -17,6 +17,7 @@ import CtaBanner from "./component/CtaBanner";
 import LatestBlogs from "./component/LatestBlog";
 import FAQ from "./component/FAQ";
 import HeroParallax from "./component/HeroParallax";
+import FeaturedPackage from "./Pages/FeaturedPackage";
 
 
 
@@ -45,7 +46,7 @@ function App() {
     }
   />
 
-  <Route path="/packages" element={<Packages />} />
+  <Route path="/packages" element={<FeaturedPackage />} />
   <Route path="/about" element={<About />} />
   {/* <Route path="/bike-rentals" element={<BikeRentals />} /> */}
 </Routes>
