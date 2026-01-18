@@ -1,95 +1,103 @@
+import { useState } from "react";
 import PackageModal from "../component/packagemodal";
 import "./FeaturedPackage.css";
-const [open, setOpen] = useState(false);
-/* =======================
-   DATA (can move later)
-======================= */
+
+/* ======================
+   DATA (mock for now)
+====================== */
 const packages = [
   {
     id: 1,
     title: "Tropical Escape",
     location: "Maldives",
-    price: "₹1,20,000",
-    rating: "4.9",
-    duration: "7 Days",
+    price: 1200,
+    rating: 4.9,
+    days: 7,
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    itinerary: [
+      {
+        title: "Day 1: Arrival in Paradise",
+        desc: "Arrival at Velana International Airport and transfer to the resort.",
+      },
+      {
+        title: "Day 2: Underwater Wonders",
+        desc: "Snorkeling and reef exploration with marine experts.",
+      },
+    ],
+    includes: [
+      "7 Nights in Overwater Villa",
+      "Daily Breakfast & Dinner",
+      "Speedboat Transfers",
+    ],
+    excludes: [
+      "International Flights",
+      "Travel Insurance",
+      "Personal Expenses",
+    ],
   },
   {
     id: 2,
     title: "Mountain Retreat",
     location: "Swiss Alps",
-    price: "₹95,000",
-    rating: "4.8",
-    duration: "5 Days",
+    price: 1600,
+    rating: 4.8,
+    days: 6,
     image:
       "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-  },
-  {
-    id: 3,
-    title: "City Explorer",
-    location: "Paris",
-    price: "₹85,000",
-    rating: "4.7",
-    duration: "4 Days",
-    image:
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34",
+    itinerary: [
+      {
+        title: "Day 1: Arrival",
+        desc: "Scenic mountain transfer and lodge check-in.",
+      },
+    ],
+    includes: ["Luxury Lodge Stay", "Guided Hikes"],
+    excludes: ["Flights", "Insurance"],
   },
 ];
 
-/* =======================
-   CARD COMPONENT
-======================= */
-function PackageCard({ data }) {
-  return (
-    <div className="package-card">
-      <div
-        className="package-image"
-        style={{ backgroundImage: `url(${data.image})` }}
-      >
-        <button onClick={() => setOpen(true)}>View Details</button>
-
-        
-        <PackageModal  isOpen={open}
-          onClose={() => setOpen(false)}
-          data={packageData}/>
-        <span className="package-location">{data.location}</span>
-      </div>
-
-      <div className="package-content">
-        <h3>{data.title}</h3>
-        <p className="package-meta">
-          ⭐ {data.rating} · {data.duration}
-        </p>
-
-        <div className="package-footer">
-          <div>
-            <small>Starting from</small>
-            <strong>{data.price}</strong>
-          </div>
-          <button>Book Now</button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* =======================
-   MAIN SECTION
-======================= */
+/* ======================
+   COMPONENT
+====================== */
 export default function FeaturedPackages() {
+  // ✅ HOOKS MUST BE HERE (TOP LEVEL)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState(null);
+
   return (
     <section className="featured-section">
-      <div className="featured-header">
-        <h2>Featured Packages</h2>
-        <p>Hand-picked journeys designed for real explorers.</p>
-      </div>
+      <h2 className="section-title">Featured Packages</h2>
 
       <div className="packages-grid">
         {packages.map((item) => (
-          <PackageCard key={item.id} data={item} />
+          <div key={item.id} className="package-card">
+            <img src={item.image} alt={item.title} />
+
+            <div className="package-info">
+              <h3>{item.title}</h3>
+              <p>{item.location}</p>
+              <strong>${item.price}</strong>
+
+              {/* ✅ BOOK NOW BUTTON */}
+              <button
+                onClick={() => {
+                  setSelectedPackage(item);
+                  setIsModalOpen(true);
+                }}
+              >
+                Book Now
+              </button>
+            </div>
+          </div>
         ))}
       </div>
+
+      {/* ✅ MODAL MUST BE RENDERED HERE */}
+      <PackageModal
+        isOpen={isModalOpen}
+        data={selectedPackage}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }
