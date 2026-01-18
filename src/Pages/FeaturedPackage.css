@@ -1,96 +1,217 @@
-.featured-section {
-  padding: 4rem 1.5rem;
-  background: #f6f8f8;
-}
+/* ================= BRAND HEADER ================= */
 
-.featured-header {
-  max-width: 700px;
-  margin: 0 auto 3rem;
+.brand-header {
   text-align: center;
+  margin: 40px 0 20px 0;
 }
 
-.featured-header h1 {
-  font-size: 2.8rem;
+.brand-title {
+  font-size: 42px;
   font-weight: 800;
 }
 
-.featured-header p {
-  color: #638288;
-  font-size: 1.1rem;
+.brand-tagline {
+  font-size: 17px;
+  color: #555;
+  margin-top: 6px;
 }
 
-.packages-grid {
+.search-bar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.search-input {
+  width: 350px;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 15px;
+}
+
+.search-btn {
+  padding: 12px 24px;
+  background: #22aa33;
+  border: none;
+  color: white;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #1c8b29;
+}
+
+
+
+/* ================= FEATURED SECTION ================= */
+.featured-section {
+  width: 90%;
+  margin: 40px auto;
+}
+
+.featured-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
+  gap: 32px;
+}
+
+.small-card-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
 }
 
 
+/* ================= CARD BASE ================= */
 .package-card {
-  background: white;
-  border-radius: 16px;
+  position: relative;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
 
-.package-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
-}
+  /* IMPORTANT: REMOVE FLEX — this blocked the overlay */
+  display: block;
 
-.package-image {
-  height: 240px;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
-  position: relative;
 }
 
-.package-image::after {
-  content: "";
+/* SIZES */
+.package-card.big {
+  height: 334px;
+}
+
+.package-card.small {
+  height: 334px;
+}
+
+
+/* ================= TAGS ================= */
+.card-tags {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-}
-
-.package-location {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  color: white;
-  font-weight: 600;
-  z-index: 1;
-}
-
-.package-content {
-  padding: 1.2rem;
-}
-
-.package-content h3 {
-  margin-bottom: 0.3rem;
-}
-
-.package-meta {
-  font-size: 0.9rem;
-  color: #638288;
-}
-
-.package-footer {
-  margin-top: 1.2rem;
+  top: 18px;
+  left: 18px;
+  z-index: 3;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 6px;
 }
 
-.package-footer strong {
-  font-size: 1.1rem;
-}
-
-.package-footer button {
-  background: #149cb8;
-  border: none;
-  padding: 0.5rem 1rem;
-  color: white;
+.tag {
+  padding: 5px 12px;
+  font-size: 12px;
   border-radius: 8px;
+  color: #fff;
+  background: #22aa33;
+}
+
+.tag.popular {
+  background:#22aa33;
+}
+
+
+/* ================= TITLE ================= */
+.card-title {
+  position: absolute;
+  bottom: 20px;
+  left: 18px;
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  width: 60%;
+  z-index: 3;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
+}
+
+
+/* ================= RIGHT OVERLAY (FIXED!) ================= */
+.card-overlay {
+  position: absolute;
+
+  /* FORCE RESET */
+  left: auto !important;
+  right: 0 !important;
+  top: 0;
+  bottom: 0;
+
+  /* Alternative hard reset */
+  inset: 0 0 0 auto;   /* top right bottom left */
+
+  width: 32%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  gap : 16px;
+  overflow: hidden;
+  padding-top: 64px;
+
+  z-index: 10;
+}
+.card-overlay p {
+  color: white;
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+
+  position: absolute;
+  bottom: 120px;     /* 👈 moves text near the bottom */
+  left: 20px;
+  right: 20px;
+}
+
+
+
+/* ================= BUTTON ================= */
+/* ================= BUTTON ================= */
+.card-overlay button {
+  position: absolute;
+  top: 20px;          /* 👈 button on top */
+  right: 20px;
+
+  background: #22aa33;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.card-overlay button:hover {
+  background: #1c8b2b;
+  transform: translateY(-2px);
+}
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .small-card-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .card-overlay {
+    width: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-overlay {
+    width: 100%;
+    height: 40%;
+    bottom: 0;
+    top: auto;
+    right: 0;
+  }
 }
