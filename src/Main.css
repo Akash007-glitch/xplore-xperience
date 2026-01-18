@@ -686,7 +686,7 @@ body {
    NAVBAR
 ========================= */
 .navbar {
-  position: sticky ;
+  position: fixed;
   top: 0;
   z-index: 1000;
     padding: 10px 16px;
@@ -698,6 +698,7 @@ body {
   background: transparent;
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  width: 100%; /* Added to fix the navbar width */
 }
 
 .Nav-left {
@@ -705,13 +706,23 @@ body {
   align-items: center;
 }
 
+/* Align the hamburger menu to the right side of the navbar */
+.navbar {
+  justify-content: space-between; /* Ensure space between logo and hamburger */
+}
+
+.hamburger-menu {
+  margin-left: auto; /* Push the hamburger menu to the far right */
+}
+
 /* =========================
    BOOK NOW BUTTON
 ========================= */
 .Book-now-btn {
-  margin-left: auto;
+  margin-left: 10px;
+  margin-right: 30px;
   position: relative;
-
+  padding-left: 12px;
   padding: 12px 26px;
   font-size: 12px;
   font-weight: 600;
@@ -1931,5 +1942,34 @@ body {
 .tnc{
   color: var(--muted);
   text-decoration: none;
+}
+
+/* Responsive styles for the navbar */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    padding: 10px; /* Adjust padding for smaller screens */
+    gap: 20px; /* Reduce gap between items */
+  }
+
+  .nav-links {
+    flex-direction: column; /* Stack navigation links vertically */
+    gap: 10px; /* Reduce gap between links */
+  }
+
+  .hamburger-menu {
+    position: relative;
+    
+    padding-right: 40px;
+    display: block; /* Show hamburger menu on smaller screens */
+  }
+
+  .nav-links {
+    display: none; /* Hide links by default */
+  }
+
+  .nav-links.open {
+    display: flex; /* Show links when menu is open */
+  }
 }
 
