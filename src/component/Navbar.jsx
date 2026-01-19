@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import MotionButton from "./MotionButton";
 
 export default function Navbar() {
 
@@ -29,7 +30,7 @@ export default function Navbar() {
 
             {/* BOOK NOW (Desktop Only) */}
             <div className="Nav-left">
-                <button className="Book-now-btn glow-btn">Book Now</button>
+                <MotionButton className="Book-now-btn glow-btn">Book Now</MotionButton>
             </div>
 
             {/* HAMBURGER MENU */}

@@ -67,17 +67,17 @@ export default function PackagesPage() {
 
           {/* BIG CARD */}
           <article
-            className="package-card big"
+            className="featured-package-card big"
             style={{ backgroundImage: `url(${packages[0].image})` }}
           >
-            <div className="card-tags">
+            <div className="featured-card-tags">
               <span className="tag days">{packages[0].days}</span>
               <span className="tag popular">Popular</span>
             </div>
 
-            <h2 className="card-title">{packages[0].title}</h2>
+            <h2 className="featured-card-title">{packages[0].title}</h2>
 
-            <div className="card-overlay">
+            <div className="featured-card-overlay">
               <p>{packages[0].description}</p>
               <button>Book Now</button>
             </div>
@@ -88,17 +88,17 @@ export default function PackagesPage() {
             {packages.slice(1).map((item) => (
               <article
                 key={item.id}
-                className="package-card small"
+                className="featured-package-card small"
                 style={{ backgroundImage: `url(${item.image})` }}
               >
-                <div className="card-tags">
+                <div className="featured-card-tags">
                   <span className="tag days">{item.days}</span>
                   <span className="tag popular">Popular</span>
                 </div>
 
-                <h2 className="card-title">{item.title}</h2>
+                <h2 className="featured-card-title">{item.title}</h2>
 
-                <div className="card-overlay">
+                <div className="featured-card-overlay">
                   <p>{item.description}</p>
                   <button>Book Now</button>
                 </div>
