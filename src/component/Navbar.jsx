@@ -9,7 +9,7 @@ export default function Navbar() {
     return (
         <>
         <nav className="navbar">
-
+    
             <h2 className="logo">Xplore Xperience</h2>
 
             {/* NAV LINKS */}
@@ -40,6 +40,7 @@ export default function Navbar() {
             >
                 <i className="ri-menu-line"></i>
             </button>
+           
         </nav>
 
         {/* OVERLAY (close menu on click outside) */}
