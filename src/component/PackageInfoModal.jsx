@@ -1,4 +1,4 @@
-import "./PackageModal.css";
+import "./PackageInfoModal.css";
 
 export default function PackageModal({ isOpen, onClose, data }) {
   if (!isOpen) return null;
