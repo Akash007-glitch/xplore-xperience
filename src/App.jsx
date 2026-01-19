@@ -18,6 +18,7 @@ import LatestBlogs from "./component/LatestBlog";
 import FAQ from "./component/FAQ";
 import HeroParallax from "./component/HeroParallax";
 import FeaturedPackage from "./Pages/FeaturedPackage";
+import Testimonials from "./component/Testimonial";
 
 
 
@@ -41,6 +42,7 @@ function App() {
         <CtaBanner />
         <FAQ />
         <LatestBlogs />
+        <Testimonials/>
         
       </>
     }
