@@ -61,7 +61,7 @@ const explorePackages = [
     desc: "Walk across natural bridges hidden in the forests.",
     image: "https://images.unsplash.com/photo-1617196034798-d42163fdc82a",
   },
-    {
+  {
     id: 4,
     title: "Tawang",
     region: "Arunachal",
@@ -69,7 +69,7 @@ const explorePackages = [
     desc: "Experience the calm and culture of the world’s largest river island.",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
   },
-    {
+  {
     id: 5,
     title: "Mechuka (Menchuka)",
     region: "Arunachal",
@@ -77,7 +77,7 @@ const explorePackages = [
     desc: "Experience the calm and culture of the world’s largest river island.",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
   },
-    {
+  {
     id: 6,
     title: "Kibithu & Dong",
     region: "Arunachal",
@@ -85,7 +85,7 @@ const explorePackages = [
     desc: "Experience the calm and culture of the world’s largest river island.",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
   },
-    {
+  {
     id: 7,
     title: "Kaziranga National Park",
     region: "Assam",
@@ -93,7 +93,7 @@ const explorePackages = [
     desc: "Experience the calm and culture of the world’s largest river island.",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
   },
-    {
+  {
     id: 8,
     title: "Sivasagar",
     region: "Assam",
@@ -101,7 +101,7 @@ const explorePackages = [
     desc: "Experience the calm and culture of the world’s largest river island.",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
   },
-   {
+  {
     id: 9,
     title: "Dima Hasao",
     region: "Assam",
@@ -109,7 +109,7 @@ const explorePackages = [
     desc: "Experience the calm and culture of the world’s largest river island.",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
   },
-   {
+  {
     id: 10,
     title: "Meghalaya",
     region: "Meghalaya",
@@ -117,7 +117,7 @@ const explorePackages = [
     desc: "Experience the calm and culture of the world’s largest river island.",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
   },
-   {
+  {
     id: 11,
     title: "Meghalaya",
     region: "Meghalaya",
@@ -165,7 +165,7 @@ const explorePackages = [
     desc: "Experience the calm and culture of the world’s largest river island.",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
   },
-    {
+  {
     id: 17,
     title: "Hornbill Festival",
     region: "Nagaland",
@@ -173,7 +173,7 @@ const explorePackages = [
     desc: "Experience the calm and culture of the world’s largest river island.",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
   },
-   {
+  {
     id: 18,
     title: "Mon & Longwa",
     region: "Nagaland",
@@ -196,6 +196,9 @@ const exploreRegions = [
 
 /* ====================== MAIN COMPONENT ====================== */
 export default function FeaturedPackage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+
   const [activeRegion, setActiveRegion] = useState("All Packages");
 
   return (
@@ -210,8 +213,35 @@ export default function FeaturedPackage() {
             type="text"
             placeholder="Search State or package..."
             className="search-input"
+            value={searchQuery}
+            onChange={(e) => {
+              const value = e.target.value;
+              setSearchQuery(value);
+
+              // LIVE SUGGESTIONS
+              if (value.trim().length > 0) {
+                const filtered = explorePackages.filter((pkg) =>
+                  pkg.title.toLowerCase().includes(value.toLowerCase()) ||
+                  pkg.region.toLowerCase().includes(value.toLowerCase())
+                );
+                setSuggestions(filtered.slice(0, 5)); // show only first 5
+              } else {
+                setSuggestions([]);
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setActiveRegion("All Packages");
+                setSuggestions([]);
+              }
+            }}
           />
-          <button className="search-btn">Search</button>
+
+          <button className="search-btn" onClick={() => {
+            setActiveRegion("All Packages");
+            setSuggestions([]);}}
+            >Search
+          </button>
         </div>
       </div>
       {/* ====================== EXISTING FEATURED SECTION ====================== */}
@@ -280,19 +310,53 @@ export default function FeaturedPackage() {
           {(activeRegion === "All Packages"
             ? explorePackages
             : explorePackages.filter((p) => p.region === activeRegion)
-          ).map((pkg) => (
-            <div className="explore-card" key={pkg.id}>
-              <div
-                className="explore-card-img"
-                style={{ backgroundImage: `url(${pkg.image})` }}
-              ></div>
+          )
+            .slice() //prevent modifying original array
+            .sort((a, b) =>
+              a.title.localeCompare(b.title)) //alphabetical order
 
-              <div className="explore-card-info">
-                <h3>{pkg.title}</h3>
-                <p>{pkg.desc}</p>
+
+
+            .map((pkg) => (
+              <div className="explore-card" key={pkg.id}>
+                <span className="explore-duration-badge">{pkg.duration}</span>
+                <div
+                  className="explore-card-img"
+                  style={{ backgroundImage: `url(${pkg.image})` }}
+                ></div>
+
+                <div className="explore-card-info">
+                  <h3>{pkg.title}</h3>
+                  <p>{pkg.desc}</p>
+                  <button
+                    className="explore-book-btn"
+                    onClick={() => {
+                      const msg =
+                        `Hey! 
+I am interested in this package :-
+
+*• Package: ${pkg.title}*
+*• Region: ${pkg.region}*
+*• Duration: ${pkg.duration}*
+
+Please share more details.`;
+                      const encoded = encodeURIComponent(msg);
+
+                      const phone = "919181317151"; // your WhatsApp number
+
+                      const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+
+                      window.open(url, "_blank");
+                    }}
+                  >
+                    Book Now
+                  </button>
+
+                </div>
+
+
               </div>
-            </div>
-          ))}
+            ))}
         </div>
 
       </section>
