@@ -1,15 +1,14 @@
 import { useState } from "react";
-import PackageModal from "../component/PackageInfoModal";
 import "./FeaturedPackage.css";
 
+/* ====================== ORIGINAL DATA ====================== */
 const packages = [
   {
     id: 1,
     title: "Xplore Xperience",
     days: "6D / 5N",
     popular: true,
-    image:
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
     description:
       "Discover the enchanting beauty of Northeast India with hand-crafted travel experiences.",
     big: true,
@@ -19,8 +18,7 @@ const packages = [
     title: "Majuli River Cruise",
     days: "6D / 5N",
     popular: true,
-    image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
     description:
       "Majuli island adventures, riverside serenity and rich Assamese culture.",
     big: false,
@@ -30,26 +28,60 @@ const packages = [
     title: "Dzukou Valley Trek",
     days: "4D / 3N",
     popular: true,
-    image:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
     description:
       "Cloud-covered green valleys and unforgettable mountain landscapes.",
     big: false,
   },
 ];
 
-export default function PackagesPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState(null);
+/* ====================== EXPLORE DATA ====================== */
+const explorePackages = [
+  {
+    id: 1,
+    title: "Majuli River Island",
+    region: "Assam",
+    duration: "6D / 5N",
+    desc: "Experience the calm and culture of the world’s largest river island.",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+  },
+  {
+    id: 2,
+    title: "Tawang Monastery Tour",
+    region: "Arunachal",
+    duration: "7D / 6N",
+    desc: "Explore snow valleys, monasteries and mountain roads.",
+    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+  },
+  {
+    id: 3,
+    title: "Living Root Bridges",
+    region: "Meghalaya",
+    duration: "4D / 3N",
+    desc: "Walk across natural bridges hidden in the forests.",
+    image: "https://images.unsplash.com/photo-1617196034798-d42163fdc82a",
+  },
+];
+
+const exploreRegions = [
+  "All Packages",
+  "Arunachal",
+  "Assam",
+  "Meghalaya",
+  "Manipur",
+  "Nagaland",
+];
+
+/* ====================== MAIN COMPONENT ====================== */
+export default function FeaturedPackage() {
+  const [activeRegion, setActiveRegion] = useState("All Packages");
 
   return (
     <>
-      {/* ⭐ TOP BRAND HEADER ⭐ */}
+      {/* ================= TOP BRANDING + SEARCH ================= */}
       <div className="brand-header">
         <h1 className="brand-title">Xplore Xperience</h1>
-        <p className="brand-tagline">
-          Discover the Enchanting Northeast India
-        </p>
+        <p className="brand-sub">Discover the Enchanting Northeast India</p>
 
         <div className="search-bar">
           <input
@@ -60,24 +92,22 @@ export default function PackagesPage() {
           <button className="search-btn">Search</button>
         </div>
       </div>
-
-      {/* ⭐ ORIGINAL PACKAGE SECTION (UNCHANGED) ⭐ */}
+      {/* ====================== EXISTING FEATURED SECTION ====================== */}
       <section className="featured-section">
         <div className="featured-grid">
-
           {/* BIG CARD */}
           <article
-            className="featured-package-card big"
+            className="package-card big"
             style={{ backgroundImage: `url(${packages[0].image})` }}
           >
-            <div className="featured-card-tags">
+            <div className="card-tags">
               <span className="tag days">{packages[0].days}</span>
               <span className="tag popular">Popular</span>
             </div>
 
-            <h2 className="featured-card-title">{packages[0].title}</h2>
+            <h2 className="card-title">{packages[0].title}</h2>
 
-            <div className="featured-card-overlay">
+            <div className="card-overlay">
               <p>{packages[0].description}</p>
               <button>Book Now</button>
             </div>
@@ -88,17 +118,17 @@ export default function PackagesPage() {
             {packages.slice(1).map((item) => (
               <article
                 key={item.id}
-                className="featured-package-card small"
+                className="package-card small"
                 style={{ backgroundImage: `url(${item.image})` }}
               >
-                <div className="featured-card-tags">
+                <div className="card-tags">
                   <span className="tag days">{item.days}</span>
                   <span className="tag popular">Popular</span>
                 </div>
 
-                <h2 className="featured-card-title">{item.title}</h2>
+                <h2 className="card-title">{item.title}</h2>
 
-                <div className="featured-card-overlay">
+                <div className="card-overlay">
                   <p>{item.description}</p>
                   <button>Book Now</button>
                 </div>
@@ -106,12 +136,43 @@ export default function PackagesPage() {
             ))}
           </div>
         </div>
+      </section>
 
-        <PackageModal
-          isOpen={isModalOpen}
-          data={selectedPackage}
-          onClose={() => setIsModalOpen(false)}
-        />
+      {/* ====================== NEW EXPLORE SECTION ====================== */}
+      <section className="explore-section">
+        {/* FILTER BAR */}
+        <div className="explore-filter">
+          {exploreRegions.map((region) => (
+            <button
+              key={region}
+              className={`explore-pill ${activeRegion === region ? "active" : ""
+                }`}
+              onClick={() => setActiveRegion(region)}
+            >
+              {region}
+            </button>
+          ))}
+        </div>
+
+        <div className="explore-grid">
+          {(activeRegion === "All Packages"
+            ? explorePackages
+            : explorePackages.filter((p) => p.region === activeRegion)
+          ).map((pkg) => (
+            <div className="explore-card" key={pkg.id}>
+              <div
+                className="explore-card-img"
+                style={{ backgroundImage: `url(${pkg.image})` }}
+              ></div>
+
+              <div className="explore-card-info">
+                <h3>{pkg.title}</h3>
+                <p>{pkg.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </section>
     </>
   );
