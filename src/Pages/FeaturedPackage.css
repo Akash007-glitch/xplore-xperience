@@ -67,7 +67,7 @@
 
 
 /* ================= CARD BASE ================= */
-.package-card {
+.featured-package-card {
   position: relative;
   border-radius: 22px;
   overflow: hidden;
@@ -82,17 +82,17 @@
 }
 
 /* SIZES */
-.package-card.big {
+.featured-package-card.big {
   height: 334px;
 }
 
-.package-card.small {
+.featured-package-card.small {
   height: 334px;
 }
 
 
 /* ================= TAGS ================= */
-.card-tags {
+.featured-card-tags {
   position: absolute;
   top: 18px;
   left: 18px;
@@ -115,7 +115,7 @@
 
 
 /* ================= TITLE ================= */
-.card-title {
+.featured-card-title {
   position: absolute;
   bottom: 20px;
   left: 18px;
@@ -129,7 +129,7 @@
 
 
 /* ================= RIGHT OVERLAY (FIXED!) ================= */
-.card-overlay {
+.featured-card-overlay {
   position: absolute;
 
   /* FORCE RESET */
@@ -158,7 +158,8 @@
 
   z-index: 10;
 }
-.card-overlay p {
+
+.featured-card-overlay p {
   color: white;
   font-size: 15px;
   line-height: 1.5;
@@ -174,7 +175,7 @@
 
 /* ================= BUTTON ================= */
 /* ================= BUTTON ================= */
-.card-overlay button {
+.featured-card-overlay button {
   position: absolute;
   top: 20px;          /* 👈 button on top */
   right: 20px;
@@ -189,7 +190,7 @@
   transition: 0.2s ease;
 }
 
-.card-overlay button:hover {
+.featured-card-overlay button:hover {
   background: #1c8b2b;
   transform: translateY(-2px);
 }
@@ -197,17 +198,17 @@
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
-  .small-card-wrap {
+  .featured-small-card-wrap {
     grid-template-columns: 1fr;
   }
 
-  .card-overlay {
+  .featured-card-overlay {
     width: 45%;
   }
 }
 
 @media (max-width: 600px) {
-  .card-overlay {
+  .featured-card-overlay {
     width: 100%;
     height: 40%;
     bottom: 0;
