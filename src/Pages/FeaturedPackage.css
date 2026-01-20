@@ -10,7 +10,7 @@
   font-weight: 800;
 }
 
-.brand-tagline {
+.brand-sub {
   font-size: 17px;
   color: #555;
   margin-top: 6px;
@@ -34,7 +34,7 @@
 
 .search-btn {
   padding: 12px 24px;
-  background: var(--primary);
+  background: #22aa33;
   border: none;
   color: white;
   border-radius: 25px;
@@ -43,7 +43,7 @@
 }
 
 .search-btn:hover {
-  background: var(--secondary);
+  background: #1c8b29;
 }
 
 
@@ -67,7 +67,7 @@
 
 
 /* ================= CARD BASE ================= */
-.featured-package-card {
+.package-card {
   position: relative;
   border-radius: 22px;
   overflow: hidden;
@@ -82,17 +82,17 @@
 }
 
 /* SIZES */
-.featured-package-card.big {
+.package-card.big {
   height: 334px;
 }
 
-.featured-package-card.small {
+.package-card.small {
   height: 334px;
 }
 
 
 /* ================= TAGS ================= */
-.featured-card-tags {
+.card-tags {
   position: absolute;
   top: 18px;
   left: 18px;
@@ -106,16 +106,16 @@
   font-size: 12px;
   border-radius: 8px;
   color: #fff;
-  background: var(--primary);
+  background: #22aa33;
 }
 
 .tag.popular {
-  background: var(--secondary);
+  background:#22aa33;
 }
 
 
 /* ================= TITLE ================= */
-.featured-card-title {
+.card-title {
   position: absolute;
   bottom: 20px;
   left: 18px;
@@ -129,7 +129,7 @@
 
 
 /* ================= RIGHT OVERLAY (FIXED!) ================= */
-.featured-card-overlay {
+.card-overlay {
   position: absolute;
 
   /* FORCE RESET */
@@ -158,7 +158,7 @@
 
   z-index: 10;
 }
-.featured-card-overlay p {
+.card-overlay p {
   color: white;
   font-size: 15px;
   line-height: 1.5;
@@ -174,12 +174,12 @@
 
 /* ================= BUTTON ================= */
 /* ================= BUTTON ================= */
-.featured-card-overlay button {
+.card-overlay button {
   position: absolute;
   top: 20px;          /* 👈 button on top */
   right: 20px;
 
-  background: var(--primary);
+  background: #22aa33;
   border: none;
   color: white;
   padding: 10px 18px;
@@ -189,9 +189,8 @@
   transition: 0.2s ease;
 }
 
-.featured-card-overlay button:hover {
-  background: whitesmoke;
-  color: black;
+.card-overlay button:hover {
+  background: #1c8b2b;
   transform: translateY(-2px);
 }
 
@@ -202,13 +201,13 @@
     grid-template-columns: 1fr;
   }
 
-  .featured-card-overlay {
+  .card-overlay {
     width: 45%;
   }
 }
 
 @media (max-width: 600px) {
-  .featured-card-overlay {
+  .card-overlay {
     width: 100%;
     height: 40%;
     bottom: 0;
@@ -216,3 +215,4 @@
     right: 0;
   }
 }
+
