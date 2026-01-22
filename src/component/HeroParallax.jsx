@@ -24,7 +24,7 @@ export default function HeroParallax() {
         <AnimatedText as="h1">
           Journeys That Stay With You.
         </AnimatedText>
-         <AnimatedText as="p1">
+         <AnimatedText as="p">
           Handpicked travel experiences crafted with local expertise,
           transparent pricing, and full journey support.
         </AnimatedText>
