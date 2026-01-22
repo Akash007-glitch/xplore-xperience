@@ -1,0 +1,302 @@
+:root {
+  --primary: #E71D36;
+  --secondary: #E71D36;
+  --accent: #ffb703;
+  --dark: #050505;
+  --text: #0f172a;
+  --muted: #64748b;
+  --light: #ede7dc;
+  --white: #ffffff;
+}
+
+/* GLOBAL PAGE */
+.about-page {
+  padding: 110px 7% 80px;
+  font-family: "Inter", sans-serif;
+  background: var(--white)               !important; /* Fix white background issue */
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ===== ANIMATIONS ===== */
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.9s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== HERO SECTION ===== */
+.hero-container {
+  height: 550px;
+  border-radius: 26px;
+  background: url("/about.jpeg") center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.35)
+  );
+}
+
+/* FIXED HERO CARD */
+.hero-card {
+  position: absolute;
+  top: 25%;                   /* ← moved upward */
+  left: 80px;
+  transform: translateY(-50%);
+  width: 480px;
+  max-width: 90%;
+  padding: 32px;
+  border-radius: 20px;
+
+  /* DO NOT TOUCH — User wants this unchanged */
+  background: rgba(255, 255, 255, 0.20);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  color: var(--white);
+}
+
+.hero-card h2 {
+  margin-bottom: 14px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.hero-card h2::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: var(--primary);
+  display: block;
+  margin-top: 6px;
+}
+
+.hero-card p {
+  margin-top: 10px;
+  line-height: 1.65;
+}
+
+/* ===== STATS ===== */
+.stats-section {
+  margin-top: 90px;
+  display: flex;
+  gap: 40px;
+}
+
+.stat-box {
+  flex: 1;
+  padding: 28px;
+  border-radius: 18px;
+
+  /* NEW card color (premium soft glass) */
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ===== WHO WE ARE ===== */
+.who-section {
+  margin-top: 100px;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.who-left h2 {
+  font-size: 30px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.who-left h2::after {
+  content: "";
+  width: 50px;
+  height: 3px;
+  background: var(--accent);
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+}
+
+.who-left p {
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.who-right img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+}
+
+/* ===== JOURNEY TIMELINE ===== */
+.journey-section {
+  margin-top: 100px;
+}
+
+.journey-section h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.journey-section h2::after {
+  content: "";
+  width: 50px;
+  height: 3px;
+  background: var(--primary);
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+}
+
+.journey-line {
+  border-left: 3px solid var(--primary);
+  margin-left: 10px;
+  padding-left: 25px;
+}
+
+.journey-item {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.journey-item::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  left: -31px;
+  top: 4px;
+}
+
+.year {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ===== WHY CHOOSE US ===== */
+.why-section-cards {
+  margin-top: 100px;
+}
+
+.why-section-cards h2 {
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.why-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.why-card-box {
+  padding: 26px;
+  border-radius: 16px;
+
+  /* same updated card color */
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.28);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.10);
+
+  transition: 0.25s ease;
+}
+
+.why-card-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.12);
+}
+
+.why-card-box h3 {
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.why-card-box h3::after {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background: var(--accent);
+  display: block;
+  margin-top: 5px;
+}
+
+/* ===== MISSION ===== */
+.mission-section {
+  margin-top: 100px;
+  background: transparent !important; /* remove white box */
+  padding: 10px 0;
+}
+
+.mission-section h2 {
+  font-size: 30px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.mission-section h2::after {
+  content: "";
+  width: 55px;
+  height: 3px;
+  background: var(--primary);
+  display: block;
+  margin-top: 6px;
+}
+
+.mission-section p {
+  max-width: 800px;
+  line-height: 1.7;
+}
+
+/* ===== CTA ===== */
+.cta-section {
+  margin-top: 60px;
+  text-align: center;
+  background: transparent !important;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--primary);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(231, 29, 54, 0.22);
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.cta-btn:hover {
+  background: #c9152e;
+  transform: translateY(-3px);
+}
