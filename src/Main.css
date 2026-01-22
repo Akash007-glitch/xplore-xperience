@@ -1005,9 +1005,6 @@
   transition: 0.2s ease;
 }
 
-.footer a:hover {
-  color: #fff;
-}
 
 
 /* ============================
@@ -1065,11 +1062,12 @@
   border-radius: 50%;
   font-size: 20px;
   transition: 0.25s ease;
+  color: #ccc;
 }
 
 .icon-btn:hover {
   background: #ffffff;
-  color: #000;
+  color: #000000;
 }
 /* ============================
    RIGHT SIDE (2 COLUMN GRID)
@@ -1890,4 +1888,25 @@
   .hamburger-menu {
     display: none;
   }
+}
+/* why us icon buttion */
+.icon-btn1 {
+  height: 40px;
+  width: 40px;
+  background: rgb(255, 255, 255);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 20px;
+  transition: 0.25s ease;
+  text-decoration: none;
+  border: 2px solid #E71D36;
+  transition: 0.2s ease;
+  color: #E71D36;
+}
+
+.icon-btn1:hover {
+  background:#E71D36 ;
+  color: #f3efef;
+   border: 2px solid#E71D36;
 }
