@@ -42,14 +42,5 @@ export const destinations = [
     price: "₹5,500",
     image: "/image/dzuko.jpg",
   },
-  {
-    id: 5,
-    title: "Boracay",
-    tagline: "Island Escape",
-    location: "Aklan, Region",
-    rating: "4.8",
-    reviews: "3k",
-    price: "₹6,200",
-    image: "/images/boracay.jpg",
-  },
+ 
 ];

@@ -274,8 +274,8 @@ Keep a small bag ready with essentials during the daily trips.
             <div className="footer-col">
               <h4>Company</h4>
               <ul>
-                <li><a href="https://wa.me/917000000000">Join with us</a></li>
-                <li><a href="https://wa.me/917000000000">Partner with us</a></li>
+                <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSd9shtva2loBtC2-MFympdCUbhiwUYm56GW8lBhjsP-Kxu9_Q/viewform">Join with us</a></li>
+                <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSc_UEb1LO6tMlVWQAudaCtUDX_rzS_o5ViEmF5d-uqSYAYcHw/viewform">Partner with us</a></li>
               </ul>
             </div>
 
