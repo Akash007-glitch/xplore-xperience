@@ -52,14 +52,7 @@ export default function Destinations() {
         <h2 className="section-title">Popular Destinations</h2>
 
         <div className="slider-container">
-          <button
-            className="slider-arrow slider-arrow-left"
-            onClick={handlePrev}
-            disabled={currentIndex === 0}
-            aria-label="Previous"
-          >
-            ❮
-          </button>
+        
 
           <div className="destination-panel">
             {visibleCards.map((item) => (
@@ -67,14 +60,7 @@ export default function Destinations() {
             ))}
           </div>
 
-          <button
-            className="slider-arrow slider-arrow-right"
-            onClick={handleNext}
-            disabled={currentIndex === maxIndex}
-            aria-label="Next"
-          >
-            ❯
-          </button>
+         
         </div>
       </div>
     </section>
