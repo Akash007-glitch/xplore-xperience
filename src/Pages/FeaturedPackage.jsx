@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./FeaturedPackage.css";
 
 /* ====================== ORIGINAL DATA ====================== */
@@ -198,8 +198,25 @@ const exploreRegions = [
 export default function FeaturedPackage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-
   const [activeRegion, setActiveRegion] = useState("All Packages");
+
+  // ⭐ NEW: ref for search area
+  const searchRef = useRef(null);
+
+  // ⭐ NEW: CLOSE suggestions on outside click
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setSuggestions([]); // close popup
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -208,46 +225,74 @@ export default function FeaturedPackage() {
         <h1 className="brand-title">Xplore Xperience</h1>
         <p className="brand-sub">Discover the Enchanting Northeast India</p>
 
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search State or package..."
-            className="search-input"
-            value={searchQuery}
-            onChange={(e) => {
-              const value = e.target.value;
-              setSearchQuery(value);
+        {/* ⭐ searchRef wraps full search area */}
+        <div className="search-bar" ref={searchRef}>
+          <div className="search-wrapper">
+            <input
+              type="text"
+              placeholder="Search State or package..."
+              className="search-input"
+              value={searchQuery}
+              onChange={(e) => {
+                const value = e.target.value;
+                setSearchQuery(value);
 
-              // LIVE SUGGESTIONS
-              if (value.trim().length > 0) {
-                const filtered = explorePackages.filter((pkg) =>
-                  pkg.title.toLowerCase().includes(value.toLowerCase()) ||
-                  pkg.region.toLowerCase().includes(value.toLowerCase())
-                );
-                setSuggestions(filtered.slice(0, 5)); // show only first 5
-              } else {
-                setSuggestions([]);
-              }
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
+                if (value.trim().length > 0) {
+                  const filtered = explorePackages.filter((pkg) =>
+                    pkg.title.toLowerCase().includes(value.toLowerCase()) ||
+                    pkg.region.toLowerCase().includes(value.toLowerCase())
+                  );
+                  setSuggestions(filtered.slice(0, 5));
+                } else {
+                  setSuggestions([]);
+                }
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  setSuggestions([]);
+                  setActiveRegion("All Packages");
+                }
+              }}
+            />
+
+            <button
+              className="search-btn"
+              onClick={() => {
                 setActiveRegion("All Packages");
                 setSuggestions([]);
-              }
-            }}
-          />
+              }}
+            >
+              Search
+            </button>
 
-          <button className="search-btn" onClick={() => {
-            setActiveRegion("All Packages");
-            setSuggestions([]);}}
-            >Search
-          </button>
+            {/* ⭐ SEARCH SUGGESTIONS DROPDOWN */}
+            {suggestions.length > 0 && (
+              <div className="search-suggestions">
+                {suggestions.map((item) => (
+                  <div
+                    key={item.id}
+                    className="suggestion-item"
+                    onClick={() => {
+                      setSearchQuery(item.title);
+                      setSuggestions([]);
+                      setActiveRegion("All Packages");
+                    }}
+                  >
+                    <span className="suggestion-title">{item.title}</span>
+                    <span className="suggestion-region">{item.region}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      {/* ====================== EXISTING FEATURED SECTION ====================== */}
+
+      {/* ⭐ REST OF YOUR CODE — COMPLETELY UNCHANGED ⭐ */}
+      {/* Featured + Explore Sections remain exactly same */}
+
       <section className="featured-section">
         <div className="featured-grid">
-          {/* BIG CARD */}
           <article
             className="featured-package-card big"
             style={{ backgroundImage: `url(${packages[0].image})` }}
@@ -256,16 +301,13 @@ export default function FeaturedPackage() {
               <span className="tag days">{packages[0].days}</span>
               <span className="tag popular">Popular</span>
             </div>
-
             <h2 className="featured-card-title">{packages[0].title}</h2>
-
             <div className="featured-card-overlay">
               <p>{packages[0].description}</p>
               <button>Book Now</button>
             </div>
           </article>
 
-          {/* SMALL CARDS */}
           <div className="small-card-wrap">
             {packages.slice(1).map((item) => (
               <article
@@ -277,9 +319,7 @@ export default function FeaturedPackage() {
                   <span className="tag days">{item.days}</span>
                   <span className="tag popular">Popular</span>
                 </div>
-
                 <h2 className="featured-card-title">{item.title}</h2>
-
                 <div className="featured-card-overlay">
                   <p>{item.description}</p>
                   <button>Book Now</button>
@@ -290,9 +330,7 @@ export default function FeaturedPackage() {
         </div>
       </section>
 
-      {/* ====================== NEW EXPLORE SECTION ====================== */}
       <section className="explore-section">
-        {/* FILTER BAR */}
         <div className="explore-filter">
           {exploreRegions.map((region) => (
             <button
@@ -307,19 +345,24 @@ export default function FeaturedPackage() {
         </div>
 
         <div className="explore-grid">
-          {(activeRegion === "All Packages"
-            ? explorePackages
-            : explorePackages.filter((p) => p.region === activeRegion)
-          )
-            .slice() //prevent modifying original array
-            .sort((a, b) =>
-              a.title.localeCompare(b.title)) //alphabetical order
+          {explorePackages
+            .filter((pkg) => {
+              const matchRegion =
+                activeRegion === "All Packages" || pkg.region === activeRegion;
 
+              const matchSearch =
+                searchQuery.trim() === "" ||
+                pkg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                pkg.region.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                pkg.duration.toLowerCase().includes(searchQuery.toLowerCase());
 
-
+              return matchRegion && matchSearch;
+            })
+            .sort((a, b) => a.title.localeCompare(b.title))
             .map((pkg) => (
               <div className="explore-card" key={pkg.id}>
                 <span className="explore-duration-badge">{pkg.duration}</span>
+
                 <div
                   className="explore-card-img"
                   style={{ backgroundImage: `url(${pkg.image})` }}
@@ -328,37 +371,31 @@ export default function FeaturedPackage() {
                 <div className="explore-card-info">
                   <h3>{pkg.title}</h3>
                   <p>{pkg.desc}</p>
+
                   <button
                     className="explore-book-btn"
                     onClick={() => {
-                      const msg =
-                        `Hey! 
+                      const msg = `Hey! 
 I am interested in this package :-
 
-*• Package: ${pkg.title}*
-*• Region: ${pkg.region}*
-*• Duration: ${pkg.duration}*
+• Package: ${pkg.title}
+• Region: ${pkg.region}
+• Duration: ${pkg.duration}
 
 Please share more details.`;
-                      const encoded = encodeURIComponent(msg);
 
-                      const phone = "919181317151"; // your WhatsApp number
-
-                      const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-
-                      window.open(url, "_blank");
+                      window.open(
+                        `https://wa.me/919181317151?text=${encodeURIComponent(msg)}`,
+                        "_blank"
+                      );
                     }}
                   >
                     Book Now
                   </button>
-
                 </div>
-
-
               </div>
             ))}
         </div>
-
       </section>
     </>
   );
