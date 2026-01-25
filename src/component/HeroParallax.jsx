@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import "./HeroParallax.css";
-import AnimatedText from "./AnimatedText";
 
 export default function HeroParallax() {
   const bgRef = useRef(null);
@@ -8,8 +7,7 @@ export default function HeroParallax() {
   useEffect(() => {
     const handleScroll = () => {
       if (!bgRef.current) return;
-      bgRef.current.style.transform = `translateY(${window.scrollY * 0.3
-        }px)`;
+      bgRef.current.style.transform = `translateY(${window.scrollY * 0.25}px)`;
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -18,23 +16,30 @@ export default function HeroParallax() {
 
   return (
     <section className="parallax-section">
-      <div className="parallax-bg" ref={bgRef}></div>
+      {/* Background */}
+      <div
+        className="parallax-bg"
+        ref={bgRef}
+        aria-hidden="true"
+      ></div>
 
+      {/* Overlay */}
       <div className="parallax-overlay"></div>
 
+      {/* Content */}
       <div className="parallax-content">
-        <span className="Parahero-badge">
+        <span className="parallax-badge">
           ⭐ Voted best peaceful place in the world
         </span>
 
-        <AnimatedText as="h1">
+        <h1 className="parallax-title">
           Journeys That Stay With You.
-        </AnimatedText>
+        </h1>
 
-        <AnimatedText as="p">
+        <p className="parallax-text">
           Handpicked travel experiences crafted with local expertise,
           transparent pricing, and full journey support.
-        </AnimatedText>
+        </p>
       </div>
     </section>
   );
