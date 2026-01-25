@@ -8,7 +8,7 @@ export default function CtaBanner() {
           <h2>
             Start your journey today and see why thousands of travelers choose
             <span> Xplore Xperience</span> to explore the beauty of the
-            Tawang Aurnachal Pradesh.
+            North East.
           </h2>
 
           <button className="cta-btn">Book now</button>

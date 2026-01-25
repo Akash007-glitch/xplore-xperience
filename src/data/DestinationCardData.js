@@ -14,7 +14,7 @@ export const destinations = [
   },
   {
     id: 2,
-    title: "Baguio City",
+    title: "Shikkim",
     tagline: "Mount Getaway",
     location: "Sikkim, Region",
     rating: "4.6",
@@ -24,7 +24,7 @@ export const destinations = [
   },
   {
     id: 3,
-    title: "Vigan",
+    title: "Meghalaya",
     tagline: "Heritage City",
     location: "Ilocos Sur, Region",
     rating: "4.7",
@@ -34,7 +34,7 @@ export const destinations = [
   },
   {
     id: 4,
-    title: "Siargao",
+    title: "Nagaland",
     tagline: "Surf & Chill",
     location: "Surigao del Norte, Region",
     rating: "4.9",

@@ -1,8 +1,8 @@
 :root {
   /* BRAND */
-  --primary: #FF6500;
+  --primary: #20A229;
   /* neon green */
-  --secondary: #FF6500;
+  --secondary: #20A229;
   /* electric blue */
   --accent: #ffb703;
   /* safari yellow */
@@ -702,6 +702,34 @@
   padding: 0 24px;               /* Cleaned up padding */
   gap: 40px;
 }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+}
+@media (max-width: 768px) {
+  .logo span {
+    font-size: 1rem;
+  }
+
+  .logo img {
+    height: 34px;
+  }
+}
+
 
 
 .Nav-left {
@@ -742,7 +770,7 @@
   cursor: pointer;
   z-index: 1;
 
-  box-shadow: 0 8px 24px var(--primary);
+ 
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
@@ -1274,7 +1302,7 @@
   flex: 1;
   background: linear-gradient(135deg, #7a8fa3 0%, #5b6b7d 100%);
   flex: 1;
-  background: #abbdcd;
+  background: #ACBAC4;
   border-radius: 20px;
   padding: 40px;
   color: white;
@@ -1506,14 +1534,14 @@
   justify-content: space-between;
   gap: 60px;
 
-  background: #F5E7C6;
+  background: #ACBAC4;
   padding: 50px;
   border-radius: 24px;
 }
 
 .cta-left {
   flex: 1;
-  color: var(--dark);
+  color: var(--light);
 }
 
 .cta-left h2 {
@@ -1528,7 +1556,7 @@
 
 .cta-note {
   font-size: 14px;
-  color: var(--dark);
+  color: var(--light);
   margin-top: 14px;
   max-width: 420px;
 }

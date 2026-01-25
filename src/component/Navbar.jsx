@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import MotionButton from "./MotionButton";
+import logo from "/image/logo.png"; // adjust path if needed
 
 export default function Navbar() {
 
@@ -14,7 +15,10 @@ export default function Navbar() {
         <>
             <nav className="navbar">
 
-                <h2 className="logo">Xplore Xperience</h2>
+                <NavLink to="/" className="logo" onClick={closeMenu}>
+                    <img src={logo} alt="Xplore Xperience Logo" />
+                    <span>Xplore Xperience</span>
+                </NavLink>
 
                 {/* NAV LINKS */}
                 <div className={`nav-links ${menuOpen ? "open" : ""}`}>
