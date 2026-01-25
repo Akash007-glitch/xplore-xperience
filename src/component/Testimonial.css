@@ -1,5 +1,5 @@
 .testimonials-section {
-  background: #ffffff;
+  background: #F4F4EC;
   padding: 100px 20px 0;
 }
 
@@ -95,7 +95,7 @@ blockquote {
 
 /* CTA */
 .testimonial-cta {
-  background: #f4fafc;
+  background: #F4F4EC;
   margin-top: 120px;
   padding: 80px 20px;
   text-align: center;
@@ -119,7 +119,7 @@ blockquote {
 }
 
 .primary-btn {
-  background: #16a4c8;
+  background: var(--primary);
   color: #fff;
   padding: 14px 34px;
   border-radius: 30px;
@@ -130,10 +130,10 @@ blockquote {
 
 .outline-btn {
   background: transparent;
-  color: #16a4c8;
+  color: var(--primary);
   padding: 14px 34px;
   border-radius: 30px;
-  border: 2px solid #16a4c8;
+  border: 2px solid var(--primary);
   font-weight: 600;
   cursor: pointer;
 }

@@ -1,6 +1,6 @@
 :root {
-  --primary: #E71D36;
-  --secondary: #E71D36;
+  --primary: #FF6500;
+  --secondary: #FF6500;
   --accent: #ffb703;
   --dark: #050505;
   --text: #0f172a;
@@ -279,7 +279,7 @@
 }
 
 /* ===== CTA ===== */
-.cta-section {
+.cta-section2 {
   margin-top: 60px;
   text-align: center;
   background: transparent !important;
@@ -299,7 +299,7 @@
 }
 
 .cta-btn:hover {
-  background: #c9152e;
+  background: var(--secondary);
   transform: translateY(-3px);
 }
 @media (max-width: 1024px) {

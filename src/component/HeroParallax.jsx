@@ -1,45 +1,58 @@
 import { useEffect, useRef } from "react";
+import { ArrowUpRight } from "lucide-react";
 import "./HeroParallax.css";
 
 export default function HeroParallax() {
   const bgRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const onScroll = () => {
       if (!bgRef.current) return;
-      bgRef.current.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+      bgRef.current.style.transform = `translateY(${window.scrollY * 0.3}px)`;
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <section className="parallax-section">
-      {/* Background */}
+    <section className="hero-parallax">
+      {/* Parallax Background */}
       <div
-        className="parallax-bg"
+        className="hero-parallax-bg"
         ref={bgRef}
         aria-hidden="true"
       ></div>
 
       {/* Overlay */}
-      <div className="parallax-overlay"></div>
+      <div className="hero-parallax-overlay"></div>
 
-      {/* Content */}
-      <div className="parallax-content">
-        <span className="parallax-badge">
-          ⭐ Voted best peaceful place in the world
-        </span>
+      {/* Center Text */}
+      <div className="hero-parallax-center">
+        <h1 className="hero-parallax-title">Xplore</h1>
+        <div className="hero-parallax-glow"></div>
+      </div>
 
-        <h1 className="parallax-title">
-          Journeys That Stay With You.
-        </h1>
+      {/* Bottom Content */}
+      <div className="hero-parallax-bottom">
+        <div className="hero-parallax-left">
+          <button className="hero-parallax-btn">
+            <span>Book Now</span>
+            <div className="hero-parallax-btn-icon">
+              <ArrowUpRight size={20} />
+            </div>
+          </button>
 
-        <p className="parallax-text">
-          Handpicked travel experiences crafted with local expertise,
-          transparent pricing, and full journey support.
-        </p>
+          <p className="hero-parallax-desc">
+            Discover breathtaking destinations, exclusive deals, and seamless
+            bookings. Your dream adventure awaits.
+          </p>
+        </div>
+
+        <div className="hero-parallax-more">
+          <span>Explore more</span>
+          <ArrowUpRight size={16} />
+        </div>
       </div>
     </section>
   );

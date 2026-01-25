@@ -176,7 +176,7 @@ export default function About() {
       </div>
 
       {/* ================= CTA ================= */}
-      <div className="cta-section animate-fade-up">
+      <div className="cta-section2 animate-fade-up">
         <Link to="/packages" className="cta-btn">
           Explore Packages
         </Link>

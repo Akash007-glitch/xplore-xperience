@@ -354,7 +354,7 @@
 }
 
 .explore-pill.active {
-  background: #1fae39;
+  background: var(--primary);
   color: #fff;
   font-weight: 600;
 }
@@ -380,9 +380,12 @@
 }
 
 /* Phone */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .explore-grid {
     grid-template-columns: 1fr;
+  }
+  .featured-grid {
+    display: none;
   }
 }
 
@@ -453,7 +456,7 @@
   width: 100%;
   border: none;
   border-radius: 12px;
-  background: #F63049;
+  background: var(--primary);
   color: #fff;
   font-weight: 600;
   font-size: 15px;
@@ -462,7 +465,7 @@
 }
 
 .explore-book:hover {
-  background: #158c30;
+  background: var(--primary);
   transform: translateY(-1px);
 }
 
@@ -494,7 +497,7 @@
   padding: 6px 14px;
   border-radius: 999px;
 
-  background: #F63049;
+  background: var(--primary);
   color: #fff;
 
   font-size: 12px;
@@ -515,7 +518,7 @@
   width: 100%;
   padding: 12px 0;
 
-  background: #F63049;
+  background: var(--primary);
   color: white;
   border: none;
   border-radius: 12px;
@@ -557,7 +560,7 @@
 
 .search-input:focus {
   outline: none;
-  border-color: #1fae39;
+  border-color: var(--primary);
   background: #fff;
   box-shadow: 0 0 0 3px rgba(31, 174, 57, 0.15);
 }
@@ -565,7 +568,7 @@
 /* Search button */
 .search-btn {
   padding: 12px 20px;
-  background: #1fae39;
+  background: var(--primary);
   color: white;
   border: none;
   border-radius: 14px;
@@ -575,7 +578,7 @@
 }
 
 .search-btn:hover {
-  background: #158c30;
+  background: var(--primary);
   transform: translateY(-2px);
 }
 
@@ -653,10 +656,12 @@
   }
 
   .search-input {
+    margin-top: 10%;
     width: 90%;
   }
 
   .search-btn {
+    margin-top: 10%;
     width: 90%;
   }
 
