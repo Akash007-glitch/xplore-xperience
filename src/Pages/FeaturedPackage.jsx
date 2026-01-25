@@ -1,3 +1,5 @@
+
+
 import { useState, useRef, useEffect } from "react";
 import "./FeaturedPackage.css";
 
@@ -35,6 +37,7 @@ const packages = [
   },
 ];
 
+/* ====================== EXPLORE DATA ====================== */
 /* ====================== EXPLORE DATA ====================== */
 const explorePackages = [
   {
@@ -238,7 +241,6 @@ const explorePackages = [
     image: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f5",
   },
 ];
-
 const exploreRegions = [
   "All Packages",
   "Arunachal",
@@ -256,34 +258,51 @@ export default function FeaturedPackage() {
   const [suggestions, setSuggestions] = useState([]);
   const [activeRegion, setActiveRegion] = useState("All Packages");
 
-  // ⭐ NEW: ref for search area
+  // ADD THESE ↓↓↓↓↓
+  const [sortOpen, setSortOpen] = useState(false);
+  const [sortType, setSortType] = useState("");
+  // ADD THESE ↑↑↑↑↑
+
   const searchRef = useRef(null);
 
-  // ⭐ NEW: CLOSE suggestions on outside click
+  /* CLOSE SUGGESTIONS WHEN CLICKED OUTSIDE */
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setSuggestions([]); // close popup
+    function handleClickOutside(e) {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setSuggestions([]);
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  /* SORTING LOGIC */
+  const applySort = (list) => {
+    return [...list].sort((a, b) => {
+      if (sortType === "az") return a.title.localeCompare(b.title);
+      if (sortType === "za") return b.title.localeCompare(a.title);
+
+      const getDays = (str) => parseInt(str.split("D")[0]);
+
+      if (sortType === "short") return getDays(a.duration) - getDays(b.duration);
+      if (sortType === "long") return getDays(b.duration) - getDays(a.duration);
+
+      return 0;
+    });
+  };
 
   return (
     <>
-      {/* ================= TOP BRANDING + SEARCH ================= */}
+      {/* ================= TOP HEADER ================= */}
       <div className="brand-header">
         <h1 className="brand-title">Xplore Xperience</h1>
         <p className="brand-sub">Discover the Enchanting Northeast India</p>
 
-        {/* ⭐ searchRef wraps full search area */}
+        {/* ================= SEARCH BAR ================= */}
         <div className="search-bar" ref={searchRef}>
           <div className="search-wrapper">
+
+            {/* SEARCH INPUT */}
             <input
               type="text"
               placeholder="Search State or package..."
@@ -303,14 +322,9 @@ export default function FeaturedPackage() {
                   setSuggestions([]);
                 }
               }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  setSuggestions([]);
-                  setActiveRegion("All Packages");
-                }
-              }}
             />
 
+            {/* SEARCH BUTTON */}
             <button
               className="search-btn"
               onClick={() => {
@@ -321,7 +335,26 @@ export default function FeaturedPackage() {
               Search
             </button>
 
-            {/* ⭐ SEARCH SUGGESTIONS DROPDOWN */}
+            {/* SORT BUTTON */}
+            <div className="sort-box">
+              <button
+                className="sort-btn"
+                onClick={() => setSortOpen(!sortOpen)}
+              >
+                Sort ▾
+              </button>
+
+              {sortOpen && (
+                <div className="sort-dropdown-airbnb">
+                  <div onClick={() => { setSortType("az"); setSortOpen(false); }}>A → Z</div>
+                  <div onClick={() => { setSortType("za"); setSortOpen(false); }}>Z → A</div>
+                  <div onClick={() => { setSortType("short"); setSortOpen(false); }}>Short → Long</div>
+                  <div onClick={() => { setSortType("long"); setSortOpen(false); }}>Long → Short</div>
+                </div>
+              )}
+            </div>
+
+            {/* SUGGESTIONS */}
             {suggestions.length > 0 && (
               <div className="search-suggestions">
                 {suggestions.map((item) => (
@@ -331,7 +364,6 @@ export default function FeaturedPackage() {
                     onClick={() => {
                       setSearchQuery(item.title);
                       setSuggestions([]);
-                      setActiveRegion("All Packages");
                     }}
                   >
                     <span className="suggestion-title">{item.title}</span>
@@ -342,11 +374,10 @@ export default function FeaturedPackage() {
             )}
           </div>
         </div>
+
       </div>
 
-      {/* ⭐ REST OF YOUR CODE — COMPLETELY UNCHANGED ⭐ */}
-      {/* Featured + Explore Sections remain exactly same */}
-
+      {/* ================= FEATURED SECTION ================= */}
       <section className="featured-section">
         <div className="featured-grid">
           <article
@@ -386,13 +417,13 @@ export default function FeaturedPackage() {
         </div>
       </section>
 
+      {/* ================= EXPLORE SECTION ================= */}
       <section className="explore-section">
         <div className="explore-filter">
           {exploreRegions.map((region) => (
             <button
               key={region}
-              className={`explore-pill ${activeRegion === region ? "active" : ""
-                }`}
+              className={`explore-pill ${activeRegion === region ? "active" : ""}`}
               onClick={() => setActiveRegion(region)}
             >
               {region}
@@ -401,8 +432,8 @@ export default function FeaturedPackage() {
         </div>
 
         <div className="explore-grid">
-          {explorePackages
-            .filter((pkg) => {
+          {applySort(
+            explorePackages.filter((pkg) => {
               const matchRegion =
                 activeRegion === "All Packages" || pkg.region === activeRegion;
 
@@ -414,24 +445,23 @@ export default function FeaturedPackage() {
 
               return matchRegion && matchSearch;
             })
-            .sort((a, b) => a.title.localeCompare(b.title))
-            .map((pkg) => (
-              <div className="explore-card" key={pkg.id}>
-                <span className="explore-duration-badge">{pkg.duration}</span>
+          ).map((pkg) => (
+            <div className="explore-card" key={pkg.id}>
+              <span className="explore-duration-badge">{pkg.duration}</span>
 
-                <div
-                  className="explore-card-img"
-                  style={{ backgroundImage: `url(${pkg.image})` }}
-                ></div>
+              <div
+                className="explore-card-img"
+                style={{ backgroundImage: `url(${pkg.image})` }}
+              ></div>
 
-                <div className="explore-card-info">
-                  <h3>{pkg.title}</h3>
-                  <p>{pkg.desc}</p>
+              <div className="explore-card-info">
+                <h3>{pkg.title}</h3>
+                <p>{pkg.desc}</p>
 
-                  <button
-                    className="explore-book-btn"
-                    onClick={() => {
-                      const msg = `Hey! 
+                <button
+                  className="explore-book-btn"
+                  onClick={() => {
+                    const msg = `Hey! 
 I am interested in this package :-
 
 • Package: ${pkg.title}
@@ -440,17 +470,17 @@ I am interested in this package :-
 
 Please share more details.`;
 
-                      window.open(
-                        `https://wa.me/919181317151?text=${encodeURIComponent(msg)}`,
-                        "_blank"
-                      );
-                    }}
-                  >
-                    Book Now
-                  </button>
-                </div>
+                    window.open(
+                      `https://wa.me/919181317151?text=${encodeURIComponent(msg)}`,
+                      "_blank"
+                    );
+                  }}
+                >
+                  Book Now
+                </button>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
       </section>
     </>
