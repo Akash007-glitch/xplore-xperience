@@ -1,5 +1,4 @@
 
-
 import { useState, useRef, useEffect } from "react";
 import "./FeaturedPackage.css";
 
@@ -7,7 +6,7 @@ import "./FeaturedPackage.css";
 const packages = [
   {
     id: 1,
-    title: "Xplore Xperience",
+    title: "Tawang",
     days: "6D / 5N",
     popular: true,
     image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
@@ -37,7 +36,6 @@ const packages = [
   },
 ];
 
-/* ====================== EXPLORE DATA ====================== */
 /* ====================== EXPLORE DATA ====================== */
 const explorePackages = [
   {
@@ -241,6 +239,7 @@ const explorePackages = [
     image: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f5",
   },
 ];
+
 const exploreRegions = [
   "All Packages",
   "Arunachal",
@@ -258,14 +257,13 @@ export default function FeaturedPackage() {
   const [suggestions, setSuggestions] = useState([]);
   const [activeRegion, setActiveRegion] = useState("All Packages");
 
-  // ADD THESE ↓↓↓↓↓
   const [sortOpen, setSortOpen] = useState(false);
   const [sortType, setSortType] = useState("");
-  // ADD THESE ↑↑↑↑↑
 
   const searchRef = useRef(null);
+  const sortRef = useRef(null);
 
-  /* CLOSE SUGGESTIONS WHEN CLICKED OUTSIDE */
+  /* CLOSE SEARCH SUGGESTIONS WHEN CLICKED OUTSIDE */
   useEffect(() => {
     function handleClickOutside(e) {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
@@ -273,23 +271,64 @@ export default function FeaturedPackage() {
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  /* CLOSE SORT DROPDOWN WHEN CLICKED OUTSIDE */
+  useEffect(() => {
+    function handleClickSort(e) {
+      if (sortRef.current && !sortRef.current.contains(e.target)) {
+        setSortOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickSort);
+    return () =>
+      document.removeEventListener("mousedown", handleClickSort);
+  }, []);
+
+  /* SEARCH HANDLER */
+  function handleSearch(e) {
+    const value = e.target.value;
+    setSearchQuery(value);
+
+    if (value.trim() !== "") {
+      const match = explorePackages.filter(
+        (p) =>
+          p.title.toLowerCase().includes(value.toLowerCase()) ||
+          p.region.toLowerCase().includes(value.toLowerCase())
+      );
+      setSuggestions(match.slice(0, 5));
+    } else {
+      setSuggestions([]);
+    }
+  }
+
+  /* PICK FROM SUGGESTION */
+  function pickSuggestion(item) {
+    setSearchQuery(item.title);
+    setSuggestions([]);
+  }
+
+  /* SORT HANDLER */
+  function apply(type) {
+    setSortType(type);
+    setSortOpen(false);
+  }
+
   /* SORTING LOGIC */
-  const applySort = (list) => {
+  function applySort(list) {
     return [...list].sort((a, b) => {
       if (sortType === "az") return a.title.localeCompare(b.title);
       if (sortType === "za") return b.title.localeCompare(a.title);
 
       const getDays = (str) => parseInt(str.split("D")[0]);
-
       if (sortType === "short") return getDays(a.duration) - getDays(b.duration);
       if (sortType === "long") return getDays(b.duration) - getDays(a.duration);
 
       return 0;
     });
-  };
+  }
 
   return (
     <>
@@ -298,58 +337,37 @@ export default function FeaturedPackage() {
         <h1 className="brand-title">Xplore Xperience</h1>
         <p className="brand-sub">Discover the Enchanting Northeast India</p>
 
-        {/* ================= SEARCH BAR ================= */}
-        <div className="search-bar" ref={searchRef}>
-          <div className="search-wrapper">
+        {/* ================= SEARCH WRAPPER ================= */}
+        <div className="search-bar">
+          <div className="search-wrapper" ref={searchRef}>
 
-            {/* SEARCH INPUT */}
+            {/* INPUT */}
             <input
               type="text"
-              placeholder="Search State or package..."
               className="search-input"
+              placeholder="Search State or package..."
               value={searchQuery}
-              onChange={(e) => {
-                const value = e.target.value;
-                setSearchQuery(value);
-
-                if (value.trim().length > 0) {
-                  const filtered = explorePackages.filter((pkg) =>
-                    pkg.title.toLowerCase().includes(value.toLowerCase()) ||
-                    pkg.region.toLowerCase().includes(value.toLowerCase())
-                  );
-                  setSuggestions(filtered.slice(0, 5));
-                } else {
-                  setSuggestions([]);
-                }
-              }}
+              onChange={handleSearch}
             />
 
-            {/* SEARCH BUTTON */}
-            <button
-              className="search-btn"
-              onClick={() => {
-                setActiveRegion("All Packages");
-                setSuggestions([]);
-              }}
-            >
-              Search
-            </button>
 
+            {/* SEARCH BUTTON */}
+            <button className="search-btn">Search</button>
             {/* SORT BUTTON */}
-            <div className="sort-box">
+            <div className="sort-box" ref={sortRef}>
               <button
                 className="sort-btn"
                 onClick={() => setSortOpen(!sortOpen)}
               >
-                Sort ▾
+                Sort By ▾
               </button>
 
               {sortOpen && (
                 <div className="sort-dropdown-airbnb">
-                  <div onClick={() => { setSortType("az"); setSortOpen(false); }}>A → Z</div>
-                  <div onClick={() => { setSortType("za"); setSortOpen(false); }}>Z → A</div>
-                  <div onClick={() => { setSortType("short"); setSortOpen(false); }}>Short → Long</div>
-                  <div onClick={() => { setSortType("long"); setSortOpen(false); }}>Long → Short</div>
+                  <div onClick={() => apply("az")}>A → Z</div>
+                  <div onClick={() => apply("za")}>Z → A</div>
+                  <div onClick={() => apply("short")}>Short → Long</div>
+                  <div onClick={() => apply("long")}>Long → Short</div>
                 </div>
               )}
             </div>
@@ -361,10 +379,7 @@ export default function FeaturedPackage() {
                   <div
                     key={item.id}
                     className="suggestion-item"
-                    onClick={() => {
-                      setSearchQuery(item.title);
-                      setSuggestions([]);
-                    }}
+                    onClick={() => pickSuggestion(item)}
                   >
                     <span className="suggestion-title">{item.title}</span>
                     <span className="suggestion-region">{item.region}</span>
@@ -374,7 +389,6 @@ export default function FeaturedPackage() {
             )}
           </div>
         </div>
-
       </div>
 
       {/* ================= FEATURED SECTION ================= */}
@@ -391,7 +405,24 @@ export default function FeaturedPackage() {
             <h2 className="featured-card-title">{packages[0].title}</h2>
             <div className="featured-card-overlay">
               <p>{packages[0].description}</p>
-              <button>Book Now</button>
+              <button
+              onClick={() => {
+                    const msg = `Hey! 
+I am interested in this package :-
+
+• Package: ${pkg.title}
+• Duration: ${pkg.days}
+
+Please share more details.`;                  
+
+                    window.open(
+                      `https://wa.me/919181317151?text=${encodeURIComponent(
+                        msg
+                      )}`,
+                      "_blank"
+                    );
+                  }}
+                >Book Now</button>
             </div>
           </article>
 
@@ -423,7 +454,8 @@ export default function FeaturedPackage() {
           {exploreRegions.map((region) => (
             <button
               key={region}
-              className={`explore-pill ${activeRegion === region ? "active" : ""}`}
+              className={`explore-pill ${activeRegion === region ? "active" : ""
+                }`}
               onClick={() => setActiveRegion(region)}
             >
               {region}
@@ -435,7 +467,8 @@ export default function FeaturedPackage() {
           {applySort(
             explorePackages.filter((pkg) => {
               const matchRegion =
-                activeRegion === "All Packages" || pkg.region === activeRegion;
+                activeRegion === "All Packages" ||
+                pkg.region === activeRegion;
 
               const matchSearch =
                 searchQuery.trim() === "" ||
@@ -460,7 +493,7 @@ export default function FeaturedPackage() {
 
                 <button
                   className="explore-book-btn"
-                  onClick={() => {
+onClick={() => {
                     const msg = `Hey! 
 I am interested in this package :-
 
@@ -468,10 +501,12 @@ I am interested in this package :-
 • Region: ${pkg.region}
 • Duration: ${pkg.duration}
 
-Please share more details.`;
+Please share more details.`;                  
 
                     window.open(
-                      `https://wa.me/919181317151?text=${encodeURIComponent(msg)}`,
+                      `https://wa.me/919181317151?text=${encodeURIComponent(
+                        msg
+                      )}`,
                       "_blank"
                     );
                   }}

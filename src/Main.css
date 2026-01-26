@@ -517,7 +517,7 @@
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .destination-section {
     justify-content: center;
     padding: 60px 0;
