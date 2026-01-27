@@ -128,7 +128,7 @@ Please share itinerary, pricing and available dates.
 `;
 
   const encodedMessage = encodeURIComponent(message);
-  const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
   window.open(whatsappURL, "_blank");
 }
