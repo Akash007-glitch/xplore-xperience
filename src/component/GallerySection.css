@@ -167,31 +167,57 @@
 }
 
 /* --- Responsive Design --- */
-@media (max-width: 900px) {
+@media (max-width: 728px) {
   .gallery-section {
-    padding: 40px 20px;
+    padding: 40px 20px; /* Reduce padding */
   }
   
   .gallery-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack vertically */
     gap: 40px;
-    text-align: center;
+    text-align: center; /* Center text on mobile */
   }
 
+  /* Text Adjustments */
   .gallery-content {
+    max-width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the button */
   }
 
   .gallery-title {
-    font-size: 2.5rem;
+    font-size: 2.25rem; /* Smaller font for mobile */
+    margin-bottom: 16px;
   }
   
-  .gallery-btn {
-    width: 100%;
-    justify-content: center;
+  .gallery-description {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+   
+  /* Image Adjustments */
+  .main-image-wrapper {
+    aspect-ratio: 16 / 9  ; /*
+    d Wider, cinematic look on mobile */
+    border-radius: 20px;
   }
 
-  .main-image-wrapper {
-    aspect-ratio: 16 / 9; /* Wider on mobile */
+  .image-overlay {
+    bottom: 15px;
+    left: 15px;
+    font-size: 0.75rem;
+  }
+
+  /* Ensure thumbnails are easy to tap */
+  .thumbnail-strip {
+    justify-content: flex-start; /* Align left to suggest scrolling */
+    padding-bottom: 10px; /* Space for touch scroll */
+  }
+  
+  .thumbnail-btn {
+    width: 70px; /* Slightly smaller thumbnails */
+    height: 50px;
   }
 }

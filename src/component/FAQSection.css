@@ -1,7 +1,7 @@
 /* Variables */
 :root {
   --primary-blue: #2563EB;
-  --bg-gray:#F4F4EC;
+  --bg-gray:#FAFAFA;
   --text-dark: #111827;
   --text-muted: #6B7280;
   --border-color: #E5E7EB;
@@ -11,7 +11,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 60px 20px;
-  background-color: #fff;
+  background-color: #FAFAFA;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 

@@ -41,7 +41,7 @@ function App() {
                 <WhyUs />
                 <TourPackages />
                 <HowItWorks />
-                <CtaBanner />
+                {/* <CtaBanner /> */}
                 <FAQ />
                 <GallerySection />
 

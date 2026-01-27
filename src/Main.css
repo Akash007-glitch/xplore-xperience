@@ -143,7 +143,7 @@
   display: flex;
   gap: 80px;
   padding: 40px 10%;
-  background:#F4F4EC;
+  background:#FAFAFA;
 }
 
 
@@ -166,7 +166,9 @@
 }
 
 .why-left h2 span {
-  color: var(--primary);
+  background: linear-gradient(120deg, #2563EB 0%, #9333ea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .why-left p {
@@ -409,7 +411,7 @@
 
 /* SECTION */
 .destination-section {
-  background: #F4F4EC;
+  background: #FAFAFA;
   padding: 80px 10%;
   display: flex;
   justify-content: center;
@@ -1287,7 +1289,7 @@
 /* Tour Packages Section */
 .tour-packages {
   padding: 60px 20px;
-  background-color: #F4F4EC;
+  background-color: #FAFAFA;
 }
 
 .Tour-packages-container {
@@ -1432,7 +1434,7 @@
 
 .how-it-works {
   padding: 50px 10%;
-  background: #F4F4EC;
+  background: #FAFAFA;
 }
 
 .how-title {
