@@ -410,8 +410,8 @@ export default function FeaturedPackage() {
                     const msg = `Hey! 
 I am interested in this package :-
 
-• Package: ${pkg.title}_
-• Duration: ${pkg.days}
+• Package: ${packages[0].title}_
+• Duration: ${packages[0].days}
 
 Please share more details.`;                  
 
@@ -440,7 +440,24 @@ Please share more details.`;
                 <h2 className="featured-card-title">{item.title}</h2>
                 <div className="featured-card-overlay">
                   <p>{item.description}</p>
-                  <button>Book Now</button>
+                  <button
+                  onClick={() => {
+                    const msg = `Hey!
+I am interested in this package :-
+
+• Package: ${item.title}_
+• Duration: ${item.days}
+
+Please share more details.`;
+
+                    window.open(
+                      `https://wa.me/919181317151?text=${encodeURIComponent(
+                        msg
+                      )}`,
+                      "_blank"
+                    );
+                  }}
+                  >Book Now</button>
                 </div>
               </article>
             ))}
