@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import SmartImage from "../component/SmartImage";
+import SEO from "../component/SEO";
 import "./FeaturedPackage.css";
 
 /* ====================== EXPLORE DATA ====================== */
@@ -380,6 +381,11 @@ export default function FeaturedPackage() {
 
   return (
     <>
+      <SEO
+        title="Travel Packages | Xplore Xperience"
+        description="Browse our curated tour packages for Northeast India including Meghalaya, Arunachal, Sikkim, Assam, and Nagaland."
+        url="https://xplorexp.in/packages"
+      />
       {/* ================= TOP HEADER ================= */}
       <div className="brand-header">
         <h1 className="brand-title">Xplore Xperience</h1>

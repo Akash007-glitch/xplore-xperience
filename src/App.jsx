@@ -7,6 +7,7 @@ import Reveal from "./component/Reveal";
 import Hero from "./component/Hero";
 import Navbar from "./component/Navbar";
 import HeroSection from "./component/HeroSection";
+import SEO from "./component/SEO";
 
 const Packages = React.lazy(() => import("./Pages/Package"));
 const About = React.lazy(() => import("./Pages/About"));
@@ -40,6 +41,11 @@ function App() {
                 path="/"
                 element={
                   <>
+                    <SEO
+                      title="Xplore Xperience | Discover Northeast India Travel Packages & Adventures"
+                      description="Explore the enchanting Northeast India with Xplore Xperience. We offer curated travel packages to Meghalaya, Arunachal Pradesh, Sikkim, Assam, Nagaland & more."
+                      url="https://xplorexp.in/"
+                    />
                     {/* <Hero /> */}
                     {/* <HeroParallax /> */}
                     <HeroSection />

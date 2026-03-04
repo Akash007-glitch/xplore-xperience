@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import "./About.css";
 import { Link } from "react-router-dom";
+import SEO from "../component/SEO";
 
 export default function About() {
   const statsRef = useRef(null);
@@ -43,6 +43,11 @@ export default function About() {
 
   return (
     <section className="about-page">
+      <SEO
+        title="About Us | Xplore Xperience"
+        description="Learn about Xplore Xperience, our mission, and our verified travel guides across Northeast India."
+        url="https://xplorexp.in/about"
+      />
 
       {/* ================= HERO ================= */}
       <div className="hero-containers">

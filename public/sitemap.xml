@@ -3,7 +3,7 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://xplorexperience.com/</loc>
+    <loc>https://xplorexp.in/</loc>
     <lastmod>2026-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,7 +11,7 @@
   
   <!-- Packages Page -->
   <url>
-    <loc>https://xplorexperience.com/packages</loc>
+    <loc>https://xplorexp.in/packages</loc>
     <lastmod>2026-02-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -19,7 +19,7 @@
   
   <!-- About Page -->
   <url>
-    <loc>https://xplorexperience.com/about</loc>
+    <loc>https://xplorexp.in/about</loc>
     <lastmod>2026-02-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
