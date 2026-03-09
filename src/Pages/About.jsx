@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import "./About.css";
 import SEO from "../component/SEO";
 
 export default function About() {
