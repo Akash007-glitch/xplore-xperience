@@ -245,6 +245,7 @@ export default function Footer() {
 
           {/* LEFT BRAND */}
           <div className="footer-left">
+            <img src="/image/logo2.png" alt="Xplore Xperience Logo" style={{ width: '60px', height: '60px', objectFit: 'contain', marginBottom: '10px', borderRadius: '50%' }} />
             <h3>Xplore Xperience</h3>
             <p>Curated travel experiences for explorers.</p>
 
