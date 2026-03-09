@@ -30,7 +30,7 @@ export default function Navbar() {
             <nav className="navbar">
 
                 <NavLink to="/" className="logo" onClick={closeMenu}>
-                    <img src="/image/logo.png" alt="Xplore Xperience Logo" />
+                    <img src="/image/logo2.png" alt="Xplore Xperience Logo" />
                     <span>Xplore Xperience</span>
                 </NavLink>
 
