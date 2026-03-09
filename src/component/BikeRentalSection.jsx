@@ -16,10 +16,10 @@ const bikeData = [
   },
   {
     id: 2,
-    name: "HIMALAYAN 450",
+    name: "HIMALAYAN 411",
     mileage: "30 kmpl",
     price: "₹1500 / Day",
-    engine: "450 cc",
+    engine: "411 cc",
     description: "Built for all roads and no roads. The Himalayan combines versatility and comfort for the ultimate off-road experience.",
     image: "/image/himalayan.png",
     logo: "/image/relogo.png"
